@@ -22,6 +22,12 @@
       <include name="*.jar"/>
     </fileset>
   </path>
+  <path id="tomcat.compile.classpath">
+    <fileset dir="${j2ee.home}/lib">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
   <!--
   <path id="j2ee-container.classpath">
     <pathelement location="${tomcat.home}/bin"/>
@@ -45,6 +51,7 @@
   <path id="compile.classpath">
     <path refid="common.compile.classpath"/>
     <path refid="j2ee.compile.classpath"/>
+    <path refid="tomcat.compile.classpath"/>
   </path>
 
 

@@ -1,0 +1,10 @@
+FROM guligo/jdk-maven-ant-tomcat-mysql
+
+ADD . /opt/rubis/
+WORKDIR /opt/rubis/
+
+RUN cd /opt/rubis/servlets && ant clean all
+RUN cp /opt/rubis/servlets/dist/rubis_servlets.war $CATALINA_HOME/webapps/
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]

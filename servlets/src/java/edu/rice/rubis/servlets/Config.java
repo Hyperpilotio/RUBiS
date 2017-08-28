@@ -34,7 +34,7 @@ public class Config
 	public static final int POOLED_DRIVERMANAGER_DB_CONNECTION_STRATEGY = 1;
 	public static final int DATASOURCE_DB_CONNECTION_STRATEGY = 2;
 
-	private static final String J2eeContainerPath = "/opt/apache-tomcat";
+	private static final String J2eeContainerPath = "/etc/tomcat-8.0.24";
 	public static final String HTMLFilesPath = J2eeContainerPath + "/webapps/rubis_servlets";
 	public static final String DatabaseProperties = J2eeContainerPath + "/webapps/rubis_servlets/WEB-INF/classes/META-INF/mysql.properties";
 
