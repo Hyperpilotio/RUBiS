@@ -1,3 +1,4 @@
 #!/bin/bash
-/etc/tomcat-8.0.24/bin/startup.sh
-mysqld
+/usr/bin/mysqld_safe &
+sleep 5
+catalina.sh run
