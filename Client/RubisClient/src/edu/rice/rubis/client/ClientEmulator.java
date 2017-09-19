@@ -426,11 +426,12 @@ public class ClientEmulator
     Process[] remoteClient = null;
     String reportDir = "";
     String tmpDir = "/tmp/";
-    boolean           isMainClient = (args.length <= 2); // Check if we are the main client
+    boolean           isMainClient = (args.length <= 3); // Check if we are the main client
     System.out.println("isMainClient:" + isMainClient);
     String propertiesFileName;
     String serverName = null;
     Integer serverPort = null;    
+    Integer threads = null;    
     if (isMainClient)
     {
 
@@ -438,11 +439,14 @@ public class ClientEmulator
     	  serverName = args[0];
       if(args.length >= 2)
     	  serverPort = new Integer(args[1]);
+      if(args.length >= 3){
+    	  threads = new Integer(args[2]); 
+      }
       // Start by creating a report directory and redirecting output to an index.html file
       System.out.println(
         "RUBiS client emulator - HyperPilot/INRIA 2017\n");
 
-      if (args.length <= 2)
+      if (args.length <= 3)
       {
         reportDir = "bench/"+TimeManagement.currentDateToString()+"/";
         reportDir = reportDir.replace(' ', '@');
@@ -507,6 +511,9 @@ public class ClientEmulator
       propertiesFileName = args[2];
     }
     ClientEmulator client = new ClientEmulator(propertiesFileName, serverName, serverPort);
+    if(threads != null){
+    	client.rubis.setNbOfClients(threads);
+    }
     // Get also rubis.properties info
 
     Stats stats = new Stats(client.rubis.getNbOfRows());
@@ -514,7 +521,9 @@ public class ClientEmulator
     Stats runSessionStats = new Stats(client.rubis.getNbOfRows());
     Stats downRampStats = new Stats(client.rubis.getNbOfRows());
     Stats allStats = new Stats(client.rubis.getNbOfRows());
+    
     UserSession[] sessions = new UserSession[client.rubis.getNbOfClients()];
+    
     boolean cjdbcFlag = client.rubis.getCJDBCServerName() != null
         && !client.rubis.getCJDBCServerName().equals("");
     System.out.println("<p><hr><p>");

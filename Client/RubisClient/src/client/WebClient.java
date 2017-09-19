@@ -32,7 +32,8 @@ public class WebClient extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String host = request.getParameter("host");
 		String port = request.getParameter("port");
-		ClientEmulator.main(new String[]{host, port}, response);
+		String threads = request.getParameter("threads");
+		ClientEmulator.main(new String[]{host, port, threads}, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

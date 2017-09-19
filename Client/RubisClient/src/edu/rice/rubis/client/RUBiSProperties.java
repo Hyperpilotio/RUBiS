@@ -702,6 +702,9 @@ public class RUBiSProperties {
 	public int getNbOfClients() {
 		return nbOfClients;
 	}
+	public void setNbOfClients(int nbOfClients) {
+		this.nbOfClients = nbOfClients;
+	}
 
 	/**
 	 * Get a vector of remote node names to launch clients on
